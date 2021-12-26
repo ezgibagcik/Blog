@@ -203,3 +203,14 @@ C:\Users\ezgib\source\repos\Blog\obj\Debug\net5.0\Razor\Areas\Admin\Views\Catego
 C:\Users\ezgib\source\repos\Blog\bin\Debug\net5.0\JetBrains.Annotations.dll
 C:\Users\ezgib\source\repos\Blog\bin\Debug\net5.0\X.PagedList.dll
 C:\Users\ezgib\source\repos\Blog\bin\Debug\net5.0\X.PagedList.Mvc.Core.dll
+C:\Users\ezgib\source\repos\Blog\obj\Debug\net5.0\Razor\Areas\Admin\Views\Category\AddCategory.cshtml.g.cs
+C:\Users\ezgib\source\repos\Blog\bin\Debug\net5.0\ClosedXML.dll
+C:\Users\ezgib\source\repos\Blog\bin\Debug\net5.0\DocumentFormat.OpenXml.dll
+C:\Users\ezgib\source\repos\Blog\bin\Debug\net5.0\ExcelNumberFormat.dll
+C:\Users\ezgib\source\repos\Blog\bin\Debug\net5.0\System.IO.Packaging.dll
+C:\Users\ezgib\source\repos\Blog\obj\Debug\net5.0\Razor\Areas\Admin\Views\Blog\BlogListExcel.cshtml.g.cs
+C:\Users\ezgib\source\repos\Blog\obj\Debug\net5.0\Razor\Areas\Admin\Views\Blog\BlogTitleListExcel.cshtml.g.cs
+C:\Users\ezgib\source\repos\Blog\obj\Debug\net5.0\Razor\Areas\Admin\Views\Widget\Index.cshtml.g.cs
+C:\Users\ezgib\source\repos\Blog\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\Components\Statistic1\Default.cshtml.g.cs
+C:\Users\ezgib\source\repos\Blog\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\Components\Statistic2\Default.cshtml.g.cs
+C:\Users\ezgib\source\repos\Blog\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\Components\Statistic3\Default.cshtml.g.cs
