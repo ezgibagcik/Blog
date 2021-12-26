@@ -214,3 +214,4 @@ C:\Users\ezgib\source\repos\Blog\obj\Debug\net5.0\Razor\Areas\Admin\Views\Widget
 C:\Users\ezgib\source\repos\Blog\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\Components\Statistic1\Default.cshtml.g.cs
 C:\Users\ezgib\source\repos\Blog\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\Components\Statistic2\Default.cshtml.g.cs
 C:\Users\ezgib\source\repos\Blog\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\Components\Statistic3\Default.cshtml.g.cs
+C:\Users\ezgib\source\repos\Blog\obj\Debug\net5.0\Razor\Areas\Admin\Views\Writer\Index.cshtml.g.cs

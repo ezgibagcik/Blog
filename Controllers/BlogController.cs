@@ -22,6 +22,11 @@ namespace Blog.Controllers
         Context c = new Context();
         public IActionResult Index()
         {
+            Context c = new Context();
+            var userMail = User.Identity.Name;
+            ViewBag.v = userMail;
+            var writerName = c.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterName).FirstOrDefault();
+            ViewBag.v2 = writerName;
             var values = bm.GetBlogListWithCategory();
             return View(values);
         }

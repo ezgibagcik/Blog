@@ -3,6 +3,7 @@ using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concreate;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace Blog.Controllers
 {
+    
     public class RegisterController : Controller
     {
         WriterManager wm = new WriterManager(new EfWriterRepository());
@@ -24,22 +26,22 @@ namespace Blog.Controllers
         {
             WriterValidator wv = new WriterValidator();
             ValidationResult results = wv.Validate(p);
-            if (results.IsValid) 
+            if (results.IsValid)
             {
                 p.WriterStatus = true;
-                p.WriterAbout = "Deneme Test";
+                p.WriterAbout = "Hakkında Ekleyiniz.";
                 wm.TAdd(p);
                 return RedirectToAction("Index", "Blog");
             }
-            else 
+            else
             {
-                foreach(var item in results.Errors) 
+                foreach (var item in results.Errors)
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
             }
             return View();
-           
+
         }
     }
 }

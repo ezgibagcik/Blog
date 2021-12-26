@@ -44,6 +44,10 @@ namespace Blog.Controllers
                 return View();
             }
         }
+        public IActionResult WriterLogout()
+        {
+            return RedirectToAction("Index", "Login");
+        }
     }
 }
 ////Session Komutları var.
