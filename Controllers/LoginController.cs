@@ -37,7 +37,7 @@ namespace Blog.Controllers
                 var useridentity = new ClaimsIdentity(claims,"a");
                 ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
                 await HttpContext.SignInAsync(principal); // gelen değeri şifreli bir şekilde cookie oluşturması için.
-                return RedirectToAction("Index", "Writer");
+                return RedirectToAction("Index", "Dashboard");
             }
             else
             {

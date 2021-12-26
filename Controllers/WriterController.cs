@@ -1,6 +1,7 @@
 ﻿using Blog.Models;
 using BusinessLayer.Concreate;
 using BusinessLayer.ValidationRules;
+using DataAccessLayer.Concreate;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concreate;
 using FluentValidation.Results;
@@ -17,8 +18,15 @@ namespace Blog.Controllers
     public class WriterController : Controller
     {
         WriterManager wm = new WriterManager(new EfWriterRepository());
+        
+        [Authorize]
         public IActionResult Index()
         {
+            Context c = new Context();
+            var userMail = User.Identity.Name;
+            ViewBag.v = userMail;
+            var writerName = c.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterName).FirstOrDefault();
+            ViewBag.v2 = writerName;
             return View();
         }
         public IActionResult WriterProfile()
@@ -44,14 +52,17 @@ namespace Blog.Controllers
         {
             return PartialView();
         }
-        [AllowAnonymous]
+      
         [HttpGet]
         public IActionResult WriterEditProfile()
         {
-            var writervalues = wm.TGetById(1);
+            Context c = new Context();
+            var userMail = User.Identity.Name;
+            var writerId = c.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterId).FirstOrDefault();
+            var writervalues = wm.TGetById(writerId);
             return View(writervalues);
         }
-        [AllowAnonymous]
+        
         [HttpPost]
         public IActionResult WriterEditProfile(Writer p)
         {

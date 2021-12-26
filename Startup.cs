@@ -31,7 +31,7 @@ namespace Blog
             //services.AddSession(); //oTURUM EKLEME //Session kýsmýný controllerdan sildim.
 
             //Proje seviyesinde authorization yapmak için kullanýlýr.
-            services.AddMvc(config=>
+            services.AddMvc(config =>
             {
                 var policy = new AuthorizationPolicyBuilder()
                             .RequireAuthenticatedUser()
@@ -42,7 +42,7 @@ namespace Blog
             services.AddMvc();
             services.AddAuthentication(
                         CookieAuthenticationDefaults.AuthenticationScheme)
-                        .AddCookie(X=>
+                        .AddCookie(X =>
                         {
                             X.LoginPath = "/Login/Index/"; //return url yapacaðýmýz yeri yazarýz.
                         }
@@ -65,7 +65,7 @@ namespace Blog
             }
 
             //app.UseStatusCodePages(); 404 sayfasýna yönlendirir.
-            app.UseStatusCodePagesWithReExecute("/ErrorPage/Error1","?code={0}");
+            app.UseStatusCodePagesWithReExecute("/ErrorPage/Error1", "?code={0}");
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -80,9 +80,14 @@ namespace Blog
 
             app.UseEndpoints(endpoints =>
             {
+               endpoints.MapControllerRoute(
+               name: "areas",
+               pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
