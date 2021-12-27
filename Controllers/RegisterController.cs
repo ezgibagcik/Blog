@@ -17,11 +17,13 @@ namespace Blog.Controllers
     {
         WriterManager wm = new WriterManager(new EfWriterRepository());
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult Index(Writer p)
         {
             WriterValidator wv = new WriterValidator();

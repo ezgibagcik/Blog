@@ -3,12 +3,15 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -27,9 +30,22 @@ namespace Blog
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            //Dil desteði :
+            services.AddSession(); //Oturum ekleme //Session kýsmýný controllerdan sildim. 
+            services.Configure<RequestLocalizationOptions>(opt =>
+            {
+                var supportedCultures = new List<CultureInfo>
+                {
+                    new CultureInfo("tr"),
+                    new CultureInfo("en")
+                };
+                opt.DefaultRequestCulture = new RequestCulture("tr");
+                opt.SupportedCultures = supportedCultures;
+                opt.SupportedUICultures = supportedCultures;
+            });
 
-            //services.AddSession(); //oTURUM EKLEME //Session kýsmýný controllerdan sildim.
-
+            services.AddLocalization(opt => { opt.ResourcesPath = "Resources"; });
+            services.AddMvc().AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
             //Proje seviyesinde authorization yapmak için kullanýlýr.
             services.AddMvc(config =>
             {
@@ -70,9 +86,11 @@ namespace Blog
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            //app.UseSession(); //oTURUMU KULLAN
+            app.UseSession(); //oTURUMU KULLAN Dil desteði
 
             app.UseAuthentication();
+            app.UseCookiePolicy();
+            app.UseRequestLocalization(app.ApplicationServices.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
 
             app.UseRouting();
 
@@ -82,7 +100,7 @@ namespace Blog
             {
                endpoints.MapControllerRoute(
                name: "areas",
-               pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+               pattern: "{area:exists}/{controller=Widget}/{action=Index}/{id?}");
 
 
                 endpoints.MapControllerRoute(

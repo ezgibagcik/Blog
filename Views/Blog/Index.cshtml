@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/UserLayout.cshtml";
 }
-<h4> Hoşgeldin! @ViewBag.v2</h4>
+<h4> <a href="@Url.Action("WriterEditProfile","Writer")">@ViewBag.v2</a></h4>
 <section class="main-content-w3layouts-agileits">
     <div class="container">
         <h3 class="tittle">Bloglar</h3>
